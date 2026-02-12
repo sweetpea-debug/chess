@@ -3,28 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tournament Details</title>
+    <title>Tournament Details • US Chess Tournament Atlas</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="container details-page">
+    <main class="detail-shell">
       <a href="index.html" class="back-link">← Back to directory</a>
-      <section class="panel" id="details-panel">
-        <h1 id="details-name">Loading tournament…</h1>
-        <p id="details-date"></p>
-        <p id="details-location"></p>
-        <p id="details-format"></p>
-        <p id="details-source"></p>
-        <p id="details-distance" class="muted"></p>
+
+      <section class="panel detail" id="detail-panel">
+        <p class="eyebrow">TOURNAMENT DETAILS</p>
+        <h1 id="d-name">Loading…</h1>
+        <p id="d-dates"></p>
+        <p id="d-location"></p>
+        <p id="d-format"></p>
+        <p id="d-source"></p>
+        <p id="d-distance" class="helper"></p>
 
         <h2>Important links</h2>
-        <ul id="details-links"></ul>
+        <ul id="d-links"></ul>
 
-        <h2>Description</h2>
-        <p id="details-description"></p>
+        <h2>Overview</h2>
+        <p id="d-summary"></p>
       </section>
     </main>
 
-    <script src="details.js"></script>
+    <script type="module" src="details.js"></script>
   </body>
 </html>
