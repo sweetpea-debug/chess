@@ -1,0 +1,102 @@
+diff --git a/index.html b/index.html
+index 00d540627f7bead358cec1585107f18b32735ca4..b412df46fe0ba8323d16e8bf01afccbced1de4ad 100644
+--- a/index.html
++++ b/index.html
+@@ -1,56 +1,64 @@
+ <!doctype html>
+ <html lang="en">
+   <head>
+     <meta charset="UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+-    <title>Trivia & Puzzles Hub</title>
++    <title>US Chess Tournament Directory</title>
+     <link rel="stylesheet" href="styles.css" />
+   </head>
+   <body>
+     <header class="hero">
+-      <h1>Trivia & Puzzles Hub</h1>
+-      <p>Challenge yourself with trivia rounds and quick brain teasers.</p>
++      <h1>Ultimate U.S. Chess Tournament Directory</h1>
++      <p>
++        Aggregated from major tournament sources and refreshed daily. Filter by state or find events
++        within 100 miles of any U.S. city.
++      </p>
++      <div class="meta-row">
++        <span id="last-updated">Last updated: --</span>
++        <button id="refresh-now" class="btn btn-secondary" type="button">Refresh now</button>
++      </div>
+     </header>
+ 
+-    <main class="layout">
+-      <section class="card" id="trivia-card">
+-        <div class="card-header">
+-          <h2>Daily Trivia</h2>
+-          <span class="pill" id="question-progress">1 / 5</span>
++    <main class="container">
++      <section class="panel filters" aria-label="Filters">
++        <div class="field">
++          <label for="state-filter">State</label>
++          <select id="state-filter">
++            <option value="all">All states</option>
++          </select>
+         </div>
+-        <p id="question" class="question"></p>
+-        <div id="answers" class="answers"></div>
+-        <p id="feedback" class="feedback" aria-live="polite"></p>
+-        <div class="button-row">
+-          <button id="next-question" class="btn">Next Question</button>
+-          <button id="reset-trivia" class="btn btn-secondary">Reset Round</button>
++
++        <div class="field city-field">
++          <label for="city-input">Find within 100 miles of city</label>
++          <div class="inline-controls">
++            <input id="city-input" type="text" placeholder="e.g. Denver, CO" autocomplete="off" />
++            <button id="city-filter-btn" class="btn" type="button">Apply radius</button>
++            <button id="clear-city-filter-btn" class="btn btn-secondary" type="button">Clear</button>
++          </div>
++          <p id="city-status" class="muted" aria-live="polite"></p>
+         </div>
+-        <p class="score">Score: <span id="score">0</span> / <span id="total">0</span></p>
+-        <p class="score muted">Best Score: <span id="best-score">0</span></p>
+       </section>
+ 
+-      <section class="card" id="puzzle-card">
+-        <div class="card-header">
+-          <h2>Word Unscramble Puzzle</h2>
+-          <span class="pill" id="attempt-count">Attempts: 0</span>
+-        </div>
+-        <p class="prompt">Unscramble this word:</p>
+-        <p id="scrambled" class="scrambled"></p>
+-        <label for="guess" class="sr-only">Enter your guess</label>
+-        <input id="guess" type="text" placeholder="Type your answer" autocomplete="off" />
+-        <div class="button-row">
+-          <button id="check-guess" class="btn">Check</button>
+-          <button id="show-hint" class="btn btn-secondary">Hint</button>
+-          <button id="new-puzzle" class="btn btn-secondary">New Puzzle</button>
++      <section class="panel">
++        <div class="results-meta">
++          <h2>Tournaments</h2>
++          <p id="result-count" class="muted">0 events</p>
+         </div>
+-        <p id="puzzle-feedback" class="feedback" aria-live="polite"></p>
++        <div id="cards" class="cards" aria-live="polite"></div>
+       </section>
+     </main>
+ 
+-    <footer>
+-      <small>Built with ❤️ for curious minds.</small>
+-    </footer>
++    <template id="card-template">
++      <article class="tournament-card">
++        <h3 class="event-name"></h3>
++        <p class="event-date"></p>
++        <p class="event-location"></p>
++        <p class="event-format"></p>
++        <div class="tags"></div>
++        <button type="button" class="btn details-btn">View details</button>
++      </article>
++    </template>
+ 
+     <script src="app.js"></script>
+   </body>
+ </html>
